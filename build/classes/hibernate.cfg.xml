@@ -9,6 +9,7 @@
     <property name="connection.password">lasombra13</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="myeclipse.connection.profile">mysql</property>
+    <property name="connection.autocommit">true</property>  
     
     <mapping resource="hibernate/hbm/Departamento.hbm.xml"/>
     <mapping resource="hibernate/hbm/Empresa.hbm.xml"/>
