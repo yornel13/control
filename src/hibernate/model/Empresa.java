@@ -38,15 +38,12 @@ public class Empresa implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Empresa(String nombre, String siglas, String email,
-			Timestamp creacion, Timestamp ultimaModificacion, String tipo,
-			Integer diaCortePago, Boolean activo) {
+	public Empresa(String nombre, String siglas, Timestamp creacion,
+			Timestamp ultimaModificacion, Integer diaCortePago, Boolean activo) {
 		this.nombre = nombre;
 		this.siglas = siglas;
-		this.email = email;
 		this.creacion = creacion;
 		this.ultimaModificacion = ultimaModificacion;
-		this.tipo = tipo;
 		this.diaCortePago = diaCortePago;
 		this.activo = activo;
 	}

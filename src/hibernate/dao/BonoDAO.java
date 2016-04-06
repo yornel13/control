@@ -1,7 +1,6 @@
 package hibernate.dao;
 
 import hibernate.model.Bono;
-import java.sql.Timestamp;
 import java.util.List;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
@@ -53,7 +52,7 @@ public class BonoDAO extends BaseHibernateDAO {
 	public Bono findById(java.lang.Integer id) {
 		log.debug("getting Bono instance with id: " + id);
 		try {
-			Bono instance = (Bono) getSession().get("hibernate.dao.Bono", id);
+			Bono instance = (Bono) getSession().get("hibernate.model.Bono", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -64,7 +63,7 @@ public class BonoDAO extends BaseHibernateDAO {
 	public List findByExample(Bono instance) {
 		log.debug("finding Bono instance by example");
 		try {
-			List results = getSession().createCriteria("hibernate.dao.Bono")
+			List results = getSession().createCriteria("hibernate.model.Bono")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

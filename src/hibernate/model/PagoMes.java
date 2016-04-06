@@ -14,8 +14,8 @@ public class PagoMes implements java.io.Serializable {
 	private Usuarios usuarios;
 	private Timestamp inicio;
 	private Timestamp finalizo;
-	private Long horasNormales;
 	private Integer totalDias;
+	private Long horasNormales;
 	private Long totalHorasNormales;
 	private Long totalHorasExtras;
 	private Long totalHorasSuplementarias;
@@ -40,7 +40,7 @@ public class PagoMes implements java.io.Serializable {
 
 	/** full constructor */
 	public PagoMes(Usuarios usuarios, Timestamp inicio, Timestamp finalizo,
-			Long horasNormales, Integer totalDias, Long totalHorasNormales,
+			Integer totalDias, Long horasNormales, Long totalHorasNormales,
 			Long totalHorasExtras, Long totalHorasSuplementarias,
 			Long totalHorasAdicionales, Integer montoBono,
 			Integer montoTransporte, Long totalMontoAdicionales, Long subtotal,
@@ -50,8 +50,8 @@ public class PagoMes implements java.io.Serializable {
 		this.usuarios = usuarios;
 		this.inicio = inicio;
 		this.finalizo = finalizo;
-		this.horasNormales = horasNormales;
 		this.totalDias = totalDias;
+		this.horasNormales = horasNormales;
 		this.totalHorasNormales = totalHorasNormales;
 		this.totalHorasExtras = totalHorasExtras;
 		this.totalHorasSuplementarias = totalHorasSuplementarias;
@@ -103,20 +103,20 @@ public class PagoMes implements java.io.Serializable {
 		this.finalizo = finalizo;
 	}
 
-	public Long getHorasNormales() {
-		return this.horasNormales;
-	}
-
-	public void setHorasNormales(Long horasNormales) {
-		this.horasNormales = horasNormales;
-	}
-
 	public Integer getTotalDias() {
 		return this.totalDias;
 	}
 
 	public void setTotalDias(Integer totalDias) {
 		this.totalDias = totalDias;
+	}
+
+	public Long getHorasNormales() {
+		return this.horasNormales;
+	}
+
+	public void setHorasNormales(Long horasNormales) {
+		this.horasNormales = horasNormales;
 	}
 
 	public Long getTotalHorasNormales() {

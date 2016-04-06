@@ -1,8 +1,6 @@
 package hibernate.model;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * RegistroAcciones entity. @author MyEclipse Persistence Tools
@@ -15,9 +13,8 @@ public class RegistroAcciones implements java.io.Serializable {
 	private Integer id;
 	private Usuarios usuarios;
 	private AccionTipo accionTipo;
+	private String detalles;
 	private Timestamp fecha;
-	private Set controlEmpleadosForEntrada = new HashSet(0);
-	private Set controlEmpleadosForSalida = new HashSet(0);
 
 	// Constructors
 
@@ -35,13 +32,11 @@ public class RegistroAcciones implements java.io.Serializable {
 
 	/** full constructor */
 	public RegistroAcciones(Usuarios usuarios, AccionTipo accionTipo,
-			Timestamp fecha, Set controlEmpleadosForEntrada,
-			Set controlEmpleadosForSalida) {
+			String detalles, Timestamp fecha) {
 		this.usuarios = usuarios;
 		this.accionTipo = accionTipo;
+		this.detalles = detalles;
 		this.fecha = fecha;
-		this.controlEmpleadosForEntrada = controlEmpleadosForEntrada;
-		this.controlEmpleadosForSalida = controlEmpleadosForSalida;
 	}
 
 	// Property accessors
@@ -70,28 +65,20 @@ public class RegistroAcciones implements java.io.Serializable {
 		this.accionTipo = accionTipo;
 	}
 
+	public String getDetalles() {
+		return this.detalles;
+	}
+
+	public void setDetalles(String detalles) {
+		this.detalles = detalles;
+	}
+
 	public Timestamp getFecha() {
 		return this.fecha;
 	}
 
 	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
-	}
-
-	public Set getControlEmpleadosForEntrada() {
-		return this.controlEmpleadosForEntrada;
-	}
-
-	public void setControlEmpleadosForEntrada(Set controlEmpleadosForEntrada) {
-		this.controlEmpleadosForEntrada = controlEmpleadosForEntrada;
-	}
-
-	public Set getControlEmpleadosForSalida() {
-		return this.controlEmpleadosForSalida;
-	}
-
-	public void setControlEmpleadosForSalida(Set controlEmpleadosForSalida) {
-		this.controlEmpleadosForSalida = controlEmpleadosForSalida;
 	}
 
 }

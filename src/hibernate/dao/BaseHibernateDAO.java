@@ -1,6 +1,5 @@
 package hibernate.dao;
 
-import hibernate.dao.IBaseHibernateDAO;
 import hibernate.HibernateSessionFactory;
 import org.hibernate.Session;
 

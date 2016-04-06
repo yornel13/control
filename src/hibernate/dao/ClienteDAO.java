@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.Cliente;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -56,7 +55,7 @@ public class ClienteDAO extends BaseHibernateDAO {
 		log.debug("getting Cliente instance with id: " + id);
 		try {
 			Cliente instance = (Cliente) getSession().get(
-					"hibernate.dao.Cliente", id);
+					"hibernate.model.Cliente", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -67,7 +66,8 @@ public class ClienteDAO extends BaseHibernateDAO {
 	public List findByExample(Cliente instance) {
 		log.debug("finding Cliente instance by example");
 		try {
-			List results = getSession().createCriteria("hibernate.dao.Cliente")
+			List results = getSession()
+					.createCriteria("hibernate.model.Cliente")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

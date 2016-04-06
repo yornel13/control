@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.Departamento;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -53,7 +52,7 @@ public class DepartamentoDAO extends BaseHibernateDAO {
 		log.debug("getting Departamento instance with id: " + id);
 		try {
 			Departamento instance = (Departamento) getSession().get(
-					"hibernate.dao.Departamento", id);
+					"hibernate.model.Departamento", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -65,7 +64,7 @@ public class DepartamentoDAO extends BaseHibernateDAO {
 		log.debug("finding Departamento instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.Departamento")
+					.createCriteria("hibernate.model.Departamento")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.Cargo;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -51,8 +50,8 @@ public class CargoDAO extends BaseHibernateDAO {
 	public Cargo findById(java.lang.Integer id) {
 		log.debug("getting Cargo instance with id: " + id);
 		try {
-			Cargo instance = (Cargo) getSession()
-					.get("hibernate.dao.Cargo", id);
+			Cargo instance = (Cargo) getSession().get("hibernate.model.Cargo",
+					id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -63,7 +62,7 @@ public class CargoDAO extends BaseHibernateDAO {
 	public List findByExample(Cargo instance) {
 		log.debug("finding Cargo instance by example");
 		try {
-			List results = getSession().createCriteria("hibernate.dao.Cargo")
+			List results = getSession().createCriteria("hibernate.model.Cargo")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

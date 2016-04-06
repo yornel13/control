@@ -52,7 +52,7 @@ public class ControlEmpleadoDAO extends BaseHibernateDAO {
 		log.debug("getting ControlEmpleado instance with id: " + id);
 		try {
 			ControlEmpleado instance = (ControlEmpleado) getSession().get(
-					"hibernate.dao.ControlEmpleado", id);
+					"hibernate.model.ControlEmpleado", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -64,7 +64,7 @@ public class ControlEmpleadoDAO extends BaseHibernateDAO {
 		log.debug("finding ControlEmpleado instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.ControlEmpleado")
+					.createCriteria("hibernate.model.ControlEmpleado")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

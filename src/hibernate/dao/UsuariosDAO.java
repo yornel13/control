@@ -1,9 +1,7 @@
 package hibernate.dao;
 
 import hibernate.model.Usuarios;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -60,7 +58,7 @@ public class UsuariosDAO extends BaseHibernateDAO {
 		log.debug("getting Usuarios instance with id: " + id);
 		try {
 			Usuarios instance = (Usuarios) getSession().get(
-					"hibernate.dao.Usuarios", id);
+					"hibernate.model.Usuarios", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -72,7 +70,7 @@ public class UsuariosDAO extends BaseHibernateDAO {
 		log.debug("finding Usuarios instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.Usuarios")
+					.createCriteria("hibernate.model.Usuarios")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

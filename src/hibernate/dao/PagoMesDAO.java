@@ -1,7 +1,6 @@
 package hibernate.dao;
 
 import hibernate.model.PagoMes;
-import java.sql.Timestamp;
 import java.util.List;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
@@ -23,8 +22,8 @@ import org.slf4j.LoggerFactory;
 public class PagoMesDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory.getLogger(PagoMesDAO.class);
 	// property constants
-	public static final String HORAS_NORMALES = "horasNormales";
 	public static final String TOTAL_DIAS = "totalDias";
+	public static final String HORAS_NORMALES = "horasNormales";
 	public static final String TOTAL_HORAS_NORMALES = "totalHorasNormales";
 	public static final String TOTAL_HORAS_EXTRAS = "totalHorasExtras";
 	public static final String TOTAL_HORAS_SUPLEMENTARIAS = "totalHorasSuplementarias";
@@ -67,7 +66,7 @@ public class PagoMesDAO extends BaseHibernateDAO {
 		log.debug("getting PagoMes instance with id: " + id);
 		try {
 			PagoMes instance = (PagoMes) getSession().get(
-					"hibernate.dao.PagoMes", id);
+					"hibernate.model.PagoMes", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -78,7 +77,8 @@ public class PagoMesDAO extends BaseHibernateDAO {
 	public List findByExample(PagoMes instance) {
 		log.debug("finding PagoMes instance by example");
 		try {
-			List results = getSession().createCriteria("hibernate.dao.PagoMes")
+			List results = getSession()
+					.createCriteria("hibernate.model.PagoMes")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -104,12 +104,12 @@ public class PagoMesDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByHorasNormales(Object horasNormales) {
-		return findByProperty(HORAS_NORMALES, horasNormales);
-	}
-
 	public List findByTotalDias(Object totalDias) {
 		return findByProperty(TOTAL_DIAS, totalDias);
+	}
+
+	public List findByHorasNormales(Object horasNormales) {
+		return findByProperty(HORAS_NORMALES, horasNormales);
 	}
 
 	public List findByTotalHorasNormales(Object totalHorasNormales) {

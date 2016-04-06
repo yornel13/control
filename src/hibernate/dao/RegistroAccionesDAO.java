@@ -1,9 +1,7 @@
 package hibernate.dao;
 
 import hibernate.model.RegistroAcciones;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -24,8 +22,8 @@ import org.slf4j.LoggerFactory;
 public class RegistroAccionesDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(RegistroAccionesDAO.class);
-
 	// property constants
+	public static final String DETALLES = "detalles";
 
 	public void save(RegistroAcciones transientInstance) {
 		log.debug("saving RegistroAcciones instance");
@@ -53,7 +51,7 @@ public class RegistroAccionesDAO extends BaseHibernateDAO {
 		log.debug("getting RegistroAcciones instance with id: " + id);
 		try {
 			RegistroAcciones instance = (RegistroAcciones) getSession().get(
-					"hibernate.dao.RegistroAcciones", id);
+					"hibernate.model.RegistroAcciones", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -65,7 +63,7 @@ public class RegistroAccionesDAO extends BaseHibernateDAO {
 		log.debug("finding RegistroAcciones instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.RegistroAcciones")
+					.createCriteria("hibernate.model.RegistroAcciones")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -89,6 +87,10 @@ public class RegistroAccionesDAO extends BaseHibernateDAO {
 			log.error("find by property name failed", re);
 			throw re;
 		}
+	}
+
+	public List findByDetalles(Object detalles) {
+		return findByProperty(DETALLES, detalles);
 	}
 
 	public List findAll() {

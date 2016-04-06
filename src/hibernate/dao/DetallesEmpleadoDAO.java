@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.DetallesEmpleado;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -54,7 +53,7 @@ public class DetallesEmpleadoDAO extends BaseHibernateDAO {
 		log.debug("getting DetallesEmpleado instance with id: " + id);
 		try {
 			DetallesEmpleado instance = (DetallesEmpleado) getSession().get(
-					"hibernate.dao.DetallesEmpleado", id);
+					"hibernate.model.DetallesEmpleado", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -66,7 +65,7 @@ public class DetallesEmpleadoDAO extends BaseHibernateDAO {
 		log.debug("finding DetallesEmpleado instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.DetallesEmpleado")
+					.createCriteria("hibernate.model.DetallesEmpleado")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

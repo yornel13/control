@@ -28,6 +28,7 @@ public class Usuarios implements java.io.Serializable {
 	private Boolean activo;
 	private Set pagoMeses = new HashSet(0);
 	private Set identidads = new HashSet(0);
+	private Set controlEmpleados = new HashSet(0);
 	private Set bonos = new HashSet(0);
 	private Set registroAccioneses = new HashSet(0);
 
@@ -57,8 +58,8 @@ public class Usuarios implements java.io.Serializable {
 			Roles roles, String nombre, String apellido, String cedula,
 			String email, String direccion, String telefono,
 			Timestamp creacion, Timestamp ultimaModificacion, String foto,
-			Boolean activo, Set pagoMeses, Set identidads, Set bonos,
-			Set registroAccioneses) {
+			Boolean activo, Set pagoMeses, Set identidads,
+			Set controlEmpleados, Set bonos, Set registroAccioneses) {
 		this.estadoCivil = estadoCivil;
 		this.detallesEmpleado = detallesEmpleado;
 		this.roles = roles;
@@ -74,6 +75,7 @@ public class Usuarios implements java.io.Serializable {
 		this.activo = activo;
 		this.pagoMeses = pagoMeses;
 		this.identidads = identidads;
+		this.controlEmpleados = controlEmpleados;
 		this.bonos = bonos;
 		this.registroAccioneses = registroAccioneses;
 	}
@@ -206,6 +208,14 @@ public class Usuarios implements java.io.Serializable {
 
 	public void setIdentidads(Set identidads) {
 		this.identidads = identidads;
+	}
+
+	public Set getControlEmpleados() {
+		return this.controlEmpleados;
+	}
+
+	public void setControlEmpleados(Set controlEmpleados) {
+		this.controlEmpleados = controlEmpleados;
 	}
 
 	public Set getBonos() {

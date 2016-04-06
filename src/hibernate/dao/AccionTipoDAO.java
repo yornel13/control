@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.AccionTipo;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -53,7 +52,7 @@ public class AccionTipoDAO extends BaseHibernateDAO {
 		log.debug("getting AccionTipo instance with id: " + id);
 		try {
 			AccionTipo instance = (AccionTipo) getSession().get(
-					"hibernate.dao.AccionTipo", id);
+					"hibernate.model.AccionTipo", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -65,7 +64,7 @@ public class AccionTipoDAO extends BaseHibernateDAO {
 		log.debug("finding AccionTipo instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.AccionTipo")
+					.createCriteria("hibernate.model.AccionTipo")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.Roles;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -52,8 +51,8 @@ public class RolesDAO extends BaseHibernateDAO {
 	public Roles findById(java.lang.Integer id) {
 		log.debug("getting Roles instance with id: " + id);
 		try {
-			Roles instance = (Roles) getSession()
-					.get("hibernate.dao.Roles", id);
+			Roles instance = (Roles) getSession().get("hibernate.model.Roles",
+					id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -64,7 +63,7 @@ public class RolesDAO extends BaseHibernateDAO {
 	public List findByExample(Roles instance) {
 		log.debug("finding Roles instance by example");
 		try {
-			List results = getSession().createCriteria("hibernate.dao.Roles")
+			List results = getSession().createCriteria("hibernate.model.Roles")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

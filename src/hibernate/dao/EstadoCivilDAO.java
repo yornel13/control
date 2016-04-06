@@ -2,7 +2,6 @@ package hibernate.dao;
 
 import hibernate.model.EstadoCivil;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.criterion.Example;
@@ -53,7 +52,7 @@ public class EstadoCivilDAO extends BaseHibernateDAO {
 		log.debug("getting EstadoCivil instance with id: " + id);
 		try {
 			EstadoCivil instance = (EstadoCivil) getSession().get(
-					"hibernate.dao.EstadoCivil", id);
+					"hibernate.model.EstadoCivil", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -65,7 +64,7 @@ public class EstadoCivilDAO extends BaseHibernateDAO {
 		log.debug("finding EstadoCivil instance by example");
 		try {
 			List results = getSession()
-					.createCriteria("hibernate.dao.EstadoCivil")
+					.createCriteria("hibernate.model.EstadoCivil")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

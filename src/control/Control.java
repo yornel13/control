@@ -5,10 +5,10 @@
  */
 package control;
 
-import hibernate.dao.AccionTipoDAO;
-import hibernate.dao.IdentidadDAO;
-import hibernate.model.AccionTipo;
-import hibernate.model.Identidad;
+import hibernate.dao.CargoDAO;
+import hibernate.dao.UsuariosDAO;
+import hibernate.model.Cargo;
+import hibernate.model.Usuarios;
 
 
 /**
@@ -23,11 +23,11 @@ public class Control {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        AccionTipoDAO accionTipoDAO = new AccionTipoDAO();
-        AccionTipo accionTipo = new AccionTipo();
-        accionTipo.setNombre("edicion");
-        accionTipo.setActivo(Boolean.TRUE);
-        accionTipoDAO.save(accionTipo);
+        UsuariosDAO user = new UsuariosDAO();
+        
+        System.out.println(((Usuarios) user.findAll().get(0)).getCedula());
+       
+        
     }
     
 }
